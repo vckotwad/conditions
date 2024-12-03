@@ -7,13 +7,23 @@ on:
         required: true
         default: dist
         type: string
+    outputs:
+      result:
+        description: output of this workflow
+        value: ${{ jobs.deploy.outcome }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    outputs:
+      outcome: ${{ steps.set-result.outputs.step-result }}
     steps:
-      - name: get code
-        uses: actions/download-artifact@v3
-        with:
-          name: ${{ inputs.artifact-name }}
+      # - name: get code
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: ${{ inputs.artifact-name }}
       - name: list files
         run: ls 
+      - name: set result output
+        id: set-result
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
+      
