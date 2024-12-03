@@ -2,7 +2,7 @@ name: Reusablef deploy
 on: workflow_call
 jobs:
   deploy:
-    runs-on: ubuntu-latset
+    runs-on: ubuntu-latest
     steps:
       - name: output infomation
         run: echo "deploying and uploading"
