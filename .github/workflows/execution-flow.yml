@@ -76,7 +76,7 @@ jobs:
       - name: Deploy
         run: echo "Deploying..."
   report:
-    runs-on: ubuntu0-latest
+    runs-on: ubuntu-latest
     if: failure()
     steps:
       - name: output information
